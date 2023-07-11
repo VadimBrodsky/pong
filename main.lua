@@ -32,6 +32,9 @@ function love.load()
 
   player1Y = 30
   player2Y = VIRTUAL_HEIGHT - 50
+
+  ballX = VIRTUAL_WIDTH / 2 - 2
+  ballY = VIRTUAL_HEIGHT / 2 - 2
 end
 
 function love.draw()
@@ -55,7 +58,7 @@ function love.draw()
   love.graphics.rectangle('fill', VIRTUAL_WIDTH - 10, player2Y, 5, 20)
 
   -- ball
-  love.graphics.rectangle('fill', VIRTUAL_WIDTH / 2 - 2, VIRTUAL_HEIGHT / 2 - 2, 4, 4)
+  love.graphics.rectangle('fill', ballX, ballY, 4, 4)
 
   push:apply('end')
 end
