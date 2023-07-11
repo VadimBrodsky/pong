@@ -6,6 +6,8 @@ WINDOW_HEIGHT = 720
 VIRTUAL_WIDTH = 432
 VIRTUAL_HEIGHT = 243
 
+PADDLE_SPEED = 200
+
 function love.load()
   smallFont = love.graphics.newFont('assets/font.ttf', 8)
   scoreFont = love.graphics.newFont('assets/font.ttf', 32)
@@ -55,6 +57,20 @@ function love.draw()
   love.graphics.rectangle('fill', VIRTUAL_WIDTH / 2 - 2, VIRTUAL_HEIGHT / 2 - 2, 4, 4)
 
   push:apply('end')
+end
+
+function love.update(dt)
+  if love.keyboard.isDown('w') then
+    player1Y = player1Y + -PADDLE_SPEED * dt
+  elseif love.keyboard.isDown('s') then
+    player1Y = player1Y + PADDLE_SPEED * dt
+  end
+
+  if love.keyboard.isDown('up') then
+    player2Y = player2Y + -PADDLE_SPEED * dt
+  elseif love.keyboard.isDown('down') then
+    player2Y = player2Y + PADDLE_SPEED * dt
+  end
 end
 
 function love.keypressed(key)
