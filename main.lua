@@ -13,6 +13,7 @@ function love.load()
   scoreFont = love.graphics.newFont('assets/font.ttf', 32)
 
   love.graphics.setDefaultFilter('nearest', 'nearest')
+  math.randomseed(os.time())
 
   push:setupScreen(
     VIRTUAL_WIDTH,
