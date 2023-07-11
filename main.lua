@@ -28,13 +28,10 @@ end
 function love.draw()
   push:apply('start')
 
-  love.graphics.printf(
-    'Hello Pong!',
-    0,
-    VIRTUAL_HEIGHT / 2 - 6,
-    VIRTUAL_WIDTH,
-    'center'
-  )
+  love.graphics.clear(40 / 255, 45 / 255, 52 / 255, 255 / 255)
+
+  -- title
+  love.graphics.printf('Hello Pong!', 0, 20, VIRTUAL_WIDTH, 'center')
 
   push:apply('end')
 end
