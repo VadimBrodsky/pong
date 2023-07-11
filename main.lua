@@ -49,7 +49,11 @@ function love.draw()
 
   -- title
   love.graphics.setFont(smallFont)
-  love.graphics.printf('Hello Pong!', 0, 20, VIRTUAL_WIDTH, 'center')
+  if gameState == 'start' then
+    love.graphics.printf('Hello Start State!', 0, 20, VIRTUAL_WIDTH, 'center')
+  else
+    love.graphics.printf('Hello Play State!', 0, 20, VIRTUAL_WIDTH, 'center')
+  end
 
   -- scores
   love.graphics.setFont(scoreFont)
