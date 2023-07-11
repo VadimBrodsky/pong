@@ -2,6 +2,7 @@ Push = require 'vendor.push.push'
 Class = require 'vendor.hump.class'
 
 require 'Paddle'
+require 'Ball'
 
 WINDOW_WIDTH = 1280
 WINDOW_HEIGHT = 720
@@ -34,13 +35,9 @@ function love.load()
   player2Score = 0
 
 
-  ballX = VIRTUAL_WIDTH / 2 - 2
-  ballY = VIRTUAL_HEIGHT / 2 - 2
-
-  ballDX = math.random(2) == 1 and 100 or -100
-  ballDY = math.random(-50, 50)
   player1 = Paddle(10, 30, 5, 20)
   player2 = Paddle(VIRTUAL_WIDTH - 10, VIRTUAL_HEIGHT - 30, 5, 20)
+  ball = Ball(VIRTUAL_HEIGHT / 2 - 2, VIRTUAL_HEIGHT / 2 - 2, 4, 4)
 
   gameState = 'start'
 end
@@ -59,10 +56,9 @@ function love.draw()
   love.graphics.print(tostring(player1Score), VIRTUAL_WIDTH / 2 - 50, VIRTUAL_HEIGHT / 3)
   love.graphics.print(tostring(player2Score), VIRTUAL_WIDTH / 2 + 30, VIRTUAL_HEIGHT / 3)
 
-  -- ball
-  love.graphics.rectangle('fill', ballX, ballY, 4, 4)
   player1:render()
   player2:render()
+  ball:render()
 
   Push:apply('end')
 end
@@ -85,8 +81,7 @@ function love.update(dt)
   end
 
   if gameState == 'play' then
-    ballX = ballX + ballDX * dt
-    ballY = ballY + ballDY * dt
+    ball:update(dt)
   end
 
   player1:update(dt)
@@ -101,12 +96,7 @@ function love.keypressed(key)
       gameState = 'play'
     else
       gameState = 'start'
-
-      ballX = VIRTUAL_WIDTH / 2 - 2
-      ballY = VIRTUAL_HEIGHT / 2 - 2
-
-      ballDX = math.random(2) == 1 and 100 or -100
-      ballDY = math.random(-50, 50) * 1.5
+      ball:reset()
     end
   end
 end
