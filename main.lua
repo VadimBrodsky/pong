@@ -90,5 +90,17 @@ end
 function love.keypressed(key)
   if key == 'escape' then
     love.event.quit()
+  elseif key == 'enter' or key == 'return' then
+    if gameState == 'start' then
+      gameState = 'play'
+    else
+      gameState = 'start'
+
+      ballX = VIRTUAL_WIDTH / 2 - 2
+      ballY = VIRTUAL_HEIGHT / 2 - 2
+
+      ballDX = math.random(2) == 1 and 100 or -100
+      ballDY = math.random(-50, 50) * 1.5
+    end
   end
 end
