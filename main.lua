@@ -38,6 +38,8 @@ function love.load()
 
   ballDX = math.random(2) == 1 and 100 or -100
   ballDY = math.random(-50, 50)
+
+  gameState = 'start'
 end
 
 function love.draw()
@@ -78,6 +80,8 @@ function love.update(dt)
   elseif love.keyboard.isDown('down') then
     player2Y = math.min(VIRTUAL_HEIGHT - 20, player2Y + PADDLE_SPEED * dt)
   end
+
+  if gameState == 'play' then
     ballX = ballX + ballDX * dt
     ballY = ballY + ballDY * dt
   end
