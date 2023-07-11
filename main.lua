@@ -34,7 +34,6 @@ function love.load()
   player1Score = 0
   player2Score = 0
 
-
   player1 = Paddle(10, 30, 5, 20)
   player2 = Paddle(VIRTUAL_WIDTH - 10, VIRTUAL_HEIGHT - 30, 5, 20)
   ball = Ball(VIRTUAL_HEIGHT / 2 - 2, VIRTUAL_HEIGHT / 2 - 2, 4, 4)
