@@ -1,4 +1,4 @@
-push = require 'vendor.push.push'
+Push = require 'vendor.push.push'
 
 WINDOW_WIDTH = 1280
 WINDOW_HEIGHT = 720
@@ -15,7 +15,7 @@ function love.load()
   love.graphics.setDefaultFilter('nearest', 'nearest')
   math.randomseed(os.time())
 
-  push:setupScreen(
+  Push:setupScreen(
     VIRTUAL_WIDTH,
     VIRTUAL_HEIGHT,
     WINDOW_WIDTH,
@@ -43,7 +43,7 @@ function love.load()
 end
 
 function love.draw()
-  push:apply('start')
+  Push:apply('start')
 
   love.graphics.clear(40 / 255, 45 / 255, 52 / 255, 255 / 255)
 
@@ -65,7 +65,7 @@ function love.draw()
   -- ball
   love.graphics.rectangle('fill', ballX, ballY, 4, 4)
 
-  push:apply('end')
+  Push:apply('end')
 end
 
 function love.update(dt)
