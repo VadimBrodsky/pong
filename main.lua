@@ -7,10 +7,10 @@ VIRTUAL_WIDTH = 432
 VIRTUAL_HEIGHT = 243
 
 function love.load()
-  local smallFont = love.graphics.newFont('assets/font.ttf', 8)
+  smallFont = love.graphics.newFont('assets/font.ttf', 8)
+  scoreFont = love.graphics.newFont('assets/font.ttf', 32)
 
   love.graphics.setDefaultFilter('nearest', 'nearest')
-  love.graphics.setFont(smallFont)
 
   push:setupScreen(
     VIRTUAL_WIDTH,
@@ -23,6 +23,9 @@ function love.load()
       vsync = true
     }
   )
+
+  player1Score = 0
+  player2Score = 0
 end
 
 function love.draw()
@@ -31,7 +34,13 @@ function love.draw()
   love.graphics.clear(40 / 255, 45 / 255, 52 / 255, 255 / 255)
 
   -- title
+  love.graphics.setFont(smallFont)
   love.graphics.printf('Hello Pong!', 0, 20, VIRTUAL_WIDTH, 'center')
+
+  -- scores
+  love.graphics.setFont(scoreFont)
+  love.graphics.print(tostring(player1Score), VIRTUAL_WIDTH / 2 - 50, VIRTUAL_HEIGHT / 3)
+  love.graphics.print(tostring(player2Score), VIRTUAL_WIDTH / 2 + 30, VIRTUAL_HEIGHT / 3)
 
   -- left paddle
   love.graphics.rectangle('fill', 10, 30, 5, 20)
