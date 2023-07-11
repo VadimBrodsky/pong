@@ -26,6 +26,9 @@ function love.load()
 
   player1Score = 0
   player2Score = 0
+
+  player1Y = 30
+  player2Y = VIRTUAL_HEIGHT - 50
 end
 
 function love.draw()
@@ -43,10 +46,10 @@ function love.draw()
   love.graphics.print(tostring(player2Score), VIRTUAL_WIDTH / 2 + 30, VIRTUAL_HEIGHT / 3)
 
   -- left paddle
-  love.graphics.rectangle('fill', 10, 30, 5, 20)
+  love.graphics.rectangle('fill', 10, player1Y, 5, 20)
 
   -- right paddle
-  love.graphics.rectangle('fill', VIRTUAL_WIDTH - 10, VIRTUAL_HEIGHT - 50, 5, 20)
+  love.graphics.rectangle('fill', VIRTUAL_WIDTH - 10, player2Y, 5, 20)
 
   -- ball
   love.graphics.rectangle('fill', VIRTUAL_WIDTH / 2 - 2, VIRTUAL_HEIGHT / 2 - 2, 4, 4)
