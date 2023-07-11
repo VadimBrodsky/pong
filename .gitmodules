@@ -1,3 +1,6 @@
 [submodule "vendor/push"]
 	path = vendor/push
 	url = https://github.com/Ulydev/push.git
+[submodule "vendor/hump"]
+	path = vendor/hump
+	url = git@github.com:vrld/hump.git
