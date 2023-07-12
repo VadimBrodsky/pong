@@ -3,6 +3,7 @@ Class = require 'vendor.hump.class'
 
 require 'Paddle'
 require 'Ball'
+require 'utils'
 
 WINDOW_WIDTH = 1280
 WINDOW_HEIGHT = 720
@@ -62,6 +63,8 @@ function love.draw()
   player1:render()
   player2:render()
   ball:render()
+
+  displayFPS(smallFont)
 
   Push:apply('end')
 end
