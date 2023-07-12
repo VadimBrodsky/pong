@@ -18,6 +18,7 @@ function love.load()
   scoreFont = love.graphics.newFont('assets/font.ttf', 32)
 
   love.graphics.setDefaultFilter('nearest', 'nearest')
+  love.window.setTitle('Pong')
   math.randomseed(os.time())
 
   Push:setupScreen(
