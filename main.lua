@@ -53,8 +53,7 @@ function love.draw()
   love.graphics.clear(40 / 255, 45 / 255, 52 / 255, 255 / 255)
 
   -- title
-  love.graphics.setFont(smallFont)
-  love.graphics.printf('Hello ' .. gameState .. ' State!', 0, 20, VIRTUAL_WIDTH, 'center')
+  displayTitle(gameState)
 
   -- scores
   love.graphics.setFont(scoreFont)
