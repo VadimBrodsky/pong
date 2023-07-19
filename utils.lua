@@ -3,6 +3,13 @@ function displayFPS(font)
 	love.graphics.setColor(0 / 255, 255 / 255, 0 / 255, 255 / 255)
 	love.graphics.print('FPS ' .. tostring(love.timer.getFPS()), 0, 0)
 end
+
+function displayScore()
+  love.graphics.setFont(scoreFont)
+  love.graphics.print(tostring(player1Score), VIRTUAL_WIDTH / 2 - 50, VIRTUAL_HEIGHT / 3)
+  love.graphics.print(tostring(player2Score), VIRTUAL_WIDTH / 2 + 30, VIRTUAL_HEIGHT / 3)
+end
+
 function displayTitle(state)
   love.graphics.setFont(smallFont)
   if state == 'start' then
