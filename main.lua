@@ -158,9 +158,6 @@ function love.keypressed(key)
       gameState = 'serve'
     elseif gameState == 'serve' then
       gameState = 'play'
-    else
-      gameState = 'start'
-      ball:reset()
     end
   end
 end
