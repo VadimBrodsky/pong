@@ -12,6 +12,7 @@ VIRTUAL_WIDTH = 426
 VIRTUAL_HEIGHT = 240
 
 PADDLE_SPEED = 200
+BALL_SPEED = 1.03
 
 function love.load()
   smallFont = love.graphics.newFont('assets/font.ttf', 8)
@@ -77,7 +78,7 @@ function love.update(dt)
     end
   elseif gameState == 'play' then
     if ball:collides(player1) then
-      ball.dx = -ball.dx * 1.03
+      ball.dx = -ball.dx * BALL_SPEED
       ball.x = player1.x + 5
 
       -- keep velocity going in the same direction but randomize the angle
@@ -89,7 +90,7 @@ function love.update(dt)
     end
 
     if ball:collides(player2) then
-      ball.dx = -ball.dx * 1.03
+      ball.dx = -ball.dx * BALL_SPEED
       ball.x = player2.x - 4
 
       -- keep velocity going in the same direction but randomize the angle
