@@ -68,22 +68,6 @@ function love.draw()
 end
 
 function love.update(dt)
-  if love.keyboard.isDown('w') then
-    player1.dy = -PADDLE_SPEED
-  elseif love.keyboard.isDown('s') then
-    player1.dy = PADDLE_SPEED
-  else
-    player1.dy = 0
-  end
-
-  if love.keyboard.isDown('i') then
-    player2.dy = -PADDLE_SPEED
-  elseif love.keyboard.isDown('k') then
-    player2.dy = PADDLE_SPEED
-  else
-    player2.dy = 0
-  end
-
   if gameState == 'serve' then
     ball.dy = math.random(-50, 50)
     if servingPlayer == 1 then
@@ -145,6 +129,23 @@ function love.update(dt)
 
     ball:update(dt)
   end
+
+  if love.keyboard.isDown('w') then
+    player1.dy = -PADDLE_SPEED
+  elseif love.keyboard.isDown('s') then
+    player1.dy = PADDLE_SPEED
+  else
+    player1.dy = 0
+  end
+
+  if love.keyboard.isDown('i') then
+    player2.dy = -PADDLE_SPEED
+  elseif love.keyboard.isDown('k') then
+    player2.dy = PADDLE_SPEED
+  else
+    player2.dy = 0
+  end
+
 
   player1:update(dt)
   player2:update(dt)
