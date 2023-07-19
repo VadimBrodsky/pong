@@ -21,5 +21,8 @@ function displayTitle(state)
     love.graphics.printf('Press Space to serve!', 0, 20, VIRTUAL_WIDTH, 'center')
   elseif state == 'play' then
     -- no UI messages to display in play
+  elseif state == 'done' then
+    love.graphics.printf('Player ' .. tostring(winningPlayer) .. ' wins', 0, 10, VIRTUAL_WIDTH, 'center')
+    love.graphics.printf('Press Space to restart', 0, 20, VIRTUAL_WIDTH, 'center')
   end
 end
