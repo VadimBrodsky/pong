@@ -133,14 +133,14 @@ function love.update(dt)
       servingPlayer = 1
       player2Score = player2Score + 1
       ball:reset()
-      gameState = 'start'
+      gameState = 'serve'
     end
 
     if ball.x > VIRTUAL_WIDTH then
       servingPlayer = 2
       player1Score = player1Score + 1
       ball:reset()
-      gameState = 'start'
+      gameState = 'serve'
     end
 
     ball:update(dt)
@@ -155,6 +155,8 @@ function love.keypressed(key)
     love.event.quit()
   elseif key == 'enter' or key == 'return' then
     if gameState == 'start' then
+      gameState = 'serve'
+    elseif gameState == 'serve' then
       gameState = 'play'
     else
       gameState = 'start'
