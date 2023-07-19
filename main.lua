@@ -154,7 +154,7 @@ end
 function love.keypressed(key)
   if key == 'escape' then
     love.event.quit()
-  elseif key == 'enter' or key == 'return' then
+  elseif key == 'space' then
     if gameState == 'start' then
       gameState = 'serve'
     elseif gameState == 'serve' then
