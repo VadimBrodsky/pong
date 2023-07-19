@@ -13,6 +13,7 @@ VIRTUAL_HEIGHT = 240
 
 PADDLE_SPEED = 200
 BALL_SPEED = 1.03
+WIN_CONDITION = 10
 
 function love.load()
   smallFont = love.graphics.newFont('assets/font.ttf', 8)
@@ -40,6 +41,7 @@ function love.load()
   player1Score = 0
   player2Score = 0
   servingPlayer = 1
+  winningPlayer = 0
 
   player1 = Paddle(10, 30, 5, 20)
   player2 = Paddle(VIRTUAL_WIDTH - 10, VIRTUAL_HEIGHT - 30, 5, 20)
@@ -117,15 +119,27 @@ function love.update(dt)
     if ball.x < 0 then
       servingPlayer = 1
       player2Score = player2Score + 1
-      ball:reset()
-      gameState = 'serve'
+
+      if player2Score == WIN_CONDITION then
+        winningPlayer = 2
+        gameState = 'done'
+      else
+        gameState = 'serve'
+        ball:reset()
+      end
     end
 
     if ball.x > VIRTUAL_WIDTH then
       servingPlayer = 2
       player1Score = player1Score + 1
-      ball:reset()
-      gameState = 'serve'
+
+      if player1Score == WIN_CONDITION then
+        winningPlayer = 1
+        gameState = 'done'
+      else
+        gameState = 'serve'
+        ball:reset()
+      end
     end
 
     ball:update(dt)
