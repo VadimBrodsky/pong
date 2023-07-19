@@ -119,7 +119,7 @@ function love.update(dt)
       end
     end
 
-    -- detect upper and lower screen boundary collision and revcerse it
+    -- detect upper and lower screen boundary collision and reverse it
     if ball.y <= 0 then
       ball.y = 0
       ball.dy = -ball.dy
