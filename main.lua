@@ -175,7 +175,6 @@ function love.update(dt)
     player2.dy = 0
   end
 
-
   player1:update(dt)
   player2:update(dt)
 end
@@ -204,5 +203,6 @@ function love.keypressed(key)
 end
 
 function love.resize(w, h)
+  -- update the Push canvas to match the new window size
   Push:resize(w, h)
 end
