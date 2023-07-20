@@ -26,6 +26,12 @@ function love.load()
   love.window.setTitle('Pong')
   math.randomseed(os.time())
 
+  sounds = {
+    ['paddle_hit'] = love.audio.newSource('assets/paddle_hit.wav', 'static'),
+    ['score'] = love.audio.newSource('assets/score.wav', 'static'),
+    ['wall_hit'] = love.audio.newSource('assets/wall_hit.wav', 'static'),
+  }
+
   Push:setupScreen(
     VIRTUAL_WIDTH,
     VIRTUAL_HEIGHT,
@@ -89,6 +95,8 @@ function love.update(dt)
       else
         ball.dy = math.random(10, 150)
       end
+
+      sounds.paddle_hit:play()
     end
 
     if ball:collides(player2) then
@@ -101,24 +109,29 @@ function love.update(dt)
       else
         ball.dy = math.random(10, 150)
       end
+
+      sounds.paddle_hit:play()
     end
 
     -- detect upper and lower screen boundary collision and reverse it
     if ball.y <= 0 then
       ball.y = 0
       ball.dy = -ball.dy
+      sounds.wall_hit:play()
     end
 
     -- -4 to account for ball's height
     if ball.y >= VIRTUAL_HEIGHT - 4 then
       ball.y = VIRTUAL_HEIGHT - 4
       ball.dy = -ball.dy
+      sounds.wall_hit:play()
     end
 
     -- detect collision with the left side of the screen
     if ball.x < 0 then
       servingPlayer = 1
       player2Score = player2Score + 1
+      sounds.score:play()
 
       if player2Score == WIN_CONDITION then
         winningPlayer = 2
@@ -132,6 +145,7 @@ function love.update(dt)
     if ball.x > VIRTUAL_WIDTH then
       servingPlayer = 2
       player1Score = player1Score + 1
+      sounds.score:play()
 
       if player1Score == WIN_CONDITION then
         winningPlayer = 1
