@@ -39,7 +39,7 @@ function love.load()
     WINDOW_HEIGHT,
     {
       fullscreen = false,
-      resizable = false,
+      resizable = true,
       vsync = true
     }
   )
@@ -201,4 +201,8 @@ function love.keypressed(key)
       end
     end
   end
+end
+
+function love.resize(w, h)
+  Push:resize(w, h)
 end
